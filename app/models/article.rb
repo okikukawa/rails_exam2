@@ -1,3 +1,4 @@
 class Article < ApplicationRecord
-  belongs_to :user
+  validates :content, presence: true
+  # belongs_to :user
 end

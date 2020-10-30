@@ -1,0 +1,8 @@
+<h3>以下の内容で投稿しますか？</h3>
+<%= form_with(model: @article, local: true) do |form| %>
+  <%= form.hidden_field :content %>
+  <!-- ここに画像を表示させるためのコードを書く -->
+  <p><%= @article.content %></p>
+  <%= form.submit  "投稿" %>
+  <%= form.submit "戻る", name: 'back' %>
+<% end %>

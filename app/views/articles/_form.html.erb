@@ -1,0 +1,20 @@
+<%= form_with(model:@article, local:true, url: choose_new_or_edit)do|form| %>
+  <% if @article.errors.any? %>
+  <div id="error_explanation">
+    <h2 class="alert alert-danger"><%= @article.errors.count %>件のエラーがあります。</h2>
+    <ul>
+     <% @article.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+     <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="article_title">
+    <%= form.label :content %>
+    <br>
+    <%= form.text_field :content %>
+    <!-- 個々に画像を登録するためのコードを書く -->
+    <%= form.submit %>
+  </div>
+<% end %>
+<%= link_to 'トップへ戻る',articles_path, class: "btn btn-primary btn-lg"%>

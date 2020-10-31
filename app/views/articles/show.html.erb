@@ -1,5 +1,5 @@
 <h2>記事詳細</h2>
-<!-- 画像を出力するコードここに書く -->
+<%= image_tag @article.image.url %>
 <p><%= @article.content %></p>
 <% unless @article.user_id == current_user.id %>
   <% if @favorite.present? %>
@@ -8,4 +8,4 @@
     <%= link_to 'お気に入り',favorites_path(article_id: @article.id),method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-<%= link_to 'トップへ戻る',articles_path,class:"btn btn-primary btn-lg" %>
+<p><%= link_to 'トップへ戻る',articles_path,class:"btn btn-primary btn-lg" %></p>

@@ -11,10 +11,11 @@
   <% end %>
   <div class="article_title">
     <%= form.label :content %>
-    <br>
-    <%= form.text_field :content %>
-    <!-- 個々に画像を登録するためのコードを書く -->
-    <%= form.submit %>
+    <p><%= form.text_field :content %></p>
+    <p><%= image_tag(@article.image.url) if @article.image && @article.image.url %></p>
+    <p><%= form.file_field :image %></p>
+    <p><%= form.submit %></p>
+    <%= form.hidden_field :image_cache %>
   </div>
 <% end %>
 <%= link_to 'トップへ戻る',articles_path, class: "btn btn-primary btn-lg"%>

@@ -4,7 +4,11 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
   def new
-    @article = Article.new
+    if params[:back]
+      @article = Article.new(article_params)
+    else
+      @article = Article.new
+    end
   end
   def create
     @article = current_user.articles.build(article_params)
@@ -40,7 +44,7 @@ class ArticlesController < ApplicationController
   end
   private
   def article_params
-    params.require(:article).permit(:image,:content)
+    params.require(:article).permit(:content, :image, :image_cache)
   end
   def set_article
     @article = Article.find(params[:id])

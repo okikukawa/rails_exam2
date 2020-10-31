@@ -1,8 +1,13 @@
 <h3>以下の内容で投稿しますか？</h3>
-<%= form_with(model: @article, local: true) do |form| %>
-  <%= form.hidden_field :content %>
-  <!-- ここに画像を表示させるためのコードを書く -->
+<%= form_with(model: @article, url: articles_path, local: true) do |form| %>
   <p><%= @article.content %></p>
-  <%= form.submit  "投稿" %>
-  <%= form.submit "戻る", name: 'back' %>
+  <%= image_tag(@article.image.url) if @article.image && @article.image.url %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :image_cache %>
+  <p><%= form.submit  "投稿" %></p>
+<% end %>
+<%= form_with(model: @article, url: new_article_path, local: true, method:"get") do |form| %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.submit "戻る", name: "back" %>
 <% end %>

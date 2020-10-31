@@ -2,6 +2,7 @@
 <div>
   <% @articles.each do |article| %>
     <div>
+      <p><%= image_tag article.image.url %></p>
       <label><%= article.content %></label>
       <p>投稿者：<%= article.user.name %></p>
       <div>

@@ -1,10 +1,9 @@
 <h1>記事一覧</h1>
-<p><%= notice %></p>
 <div>
   <% @articles.each do |article| %>
     <div>
       <label><%= article.content %></label>
-      <br>
+      <p>投稿者：<%= article.user.name %></p>
       <div>
         <%= link_to '詳細', article_path(article.id)%>
         <%= link_to '編集', edit_article_path(article.id) %>
@@ -13,4 +12,4 @@
     </div>
   <% end %>
 </div>
-<%= link_to '新規投稿', new_article_path,class:"btn btn-primary btn-lg" %>
+<p><%= link_to '新規投稿', new_article_path,class:"btn btn-primary btn-lg" %></p>

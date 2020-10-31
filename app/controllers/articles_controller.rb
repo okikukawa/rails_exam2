@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
     if params[:back]
       render :new
     else
@@ -19,6 +19,7 @@ class ArticlesController < ApplicationController
     end
   end
   def show
+    @favorite = current_user.favorites.find_by(article_id: @article.id)
   end
   def edit
   end
@@ -34,7 +35,7 @@ class ArticlesController < ApplicationController
     redirect_to articles_path, notice:"記事を削除しました。"
   end
   def confirm
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
     render :new if @article.invalid?
   end
   private

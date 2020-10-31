@@ -7,8 +7,10 @@
       <p>投稿者：<%= article.user.name %></p>
       <div>
         <%= link_to '詳細', article_path(article.id)%>
-        <%= link_to '編集', edit_article_path(article.id) %>
-        <%= link_to '削除', article_path(article.id), method: :delete,data: {confirm: '本当に削除しますか？'} %>
+        <% if logged_in? && current_user.id == article.user_id %>
+          <%= link_to '編集', edit_article_path(article.id) %>
+          <%= link_to '削除', article_path(article.id), method: :delete,data: {confirm: '本当に削除しますか？'} %>
+        <% end %>
       </div>
     </div>
   <% end %>

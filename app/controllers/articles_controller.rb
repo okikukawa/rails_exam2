@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
     end
   end
   def show
-    @favorite = current_user.favorites.find_by(article_id: @article.id)
+      @favorite = current_user.favorites.find_by(article_id: @article.id)
   end
   def edit
   end

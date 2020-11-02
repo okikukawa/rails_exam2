@@ -24,7 +24,11 @@ class ArticlesController < ApplicationController
     end
   end
   def show
+    # if current_user == nil
+    #   new_user_path
+    # else
       @favorite = current_user.favorites.find_by(article_id: @article.id)
+    # end
   end
   def edit
   end

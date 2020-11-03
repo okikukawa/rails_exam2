@@ -1,14 +1,17 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only:[:show, :edit, :update, :destroy]
-  before_action :authenticate_user, only:[:show]
   def index
     @articles = Article.all
   end
   def new
-    if params[:back]
-      @article = Article.new(article_params)
+    if logged_in?
+      if params[:back]
+        @article = Article.new(article_params)
+      else
+        @article = Article.new
+      end
     else
-      @article = Article.new
+      redirect_to new_session_path
     end
   end
   def create
@@ -24,11 +27,11 @@ class ArticlesController < ApplicationController
     end
   end
   def show
-    # if current_user == nil
-    #   new_user_path
-    # else
+    if logged_in?
       @favorite = current_user.favorites.find_by(article_id: @article.id)
-    # end
+    else
+      redirect_to new_session_path
+    end
   end
   def edit
   end

@@ -14,8 +14,8 @@
     <p><%= form.text_field :content %></p>
     <p><%= image_tag(@article.image.url) if @article.image && @article.image.url %></p>
     <p><%= form.file_field :image %></p>
-    <p><%= form.submit %></p>
+    <p class="imput_btn"><%= form.submit %></p>
     <%= form.hidden_field :image_cache %>
   </div>
 <% end %>
-<%= link_to 'トップへ戻る',articles_path, class: "btn btn-primary btn-lg"%>
+<%= link_to '記事一覧に戻る',articles_path, class: "btn btn-default return_top" %>

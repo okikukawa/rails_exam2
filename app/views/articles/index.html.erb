@@ -1,18 +1,20 @@
-<h1>記事一覧</h1>
-<div>
-  <% @articles.each do |article| %>
-    <div>
-      <p><%= image_tag article.image.url %></p>
-      <label><%= article.content %></label>
-      <p>投稿者：<%= article.user.name %></p>
-      <div>
-        <%= link_to '詳細', article_path(article.id)%>
-        <% if logged_in? && current_user.id == article.user_id %>
-          <%= link_to '編集', edit_article_path(article.id) %>
-          <%= link_to '削除', article_path(article.id), method: :delete,data: {confirm: '本当に削除しますか？'} %>
-        <% end %>
+<div class="index_wrapper">
+  <h1>記事一覧</h1>
+  <div class="container">
+    <% @articles.each do |article| %>
+      <div class="article">
+        <p><%= image_tag article.image.url %></p>
+        <label><%= article.content %></label>
+        <p>投稿者：<%= article.user.name %></p>
+        <div>
+          <%= link_to '詳細', article_path(article.id), class:"label label-default" %>
+          <% if logged_in? && current_user.id == article.user_id %>
+            <%= link_to '編集', edit_article_path(article.id), class:"label label-default" %>
+            <%= link_to '削除', article_path(article.id), method: :delete,data: {confirm: '本当に削除しますか？'} , class:"label label-danger"%>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+    <%= link_to '新規投稿', new_article_path,class:"btn btn-primary btn-lg" %>
 </div>
-<p><%= link_to '新規投稿', new_article_path,class:"btn btn-primary btn-lg" %></p>

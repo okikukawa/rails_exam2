@@ -4,10 +4,10 @@
   <%= image_tag(@article.image.url) if @article.image && @article.image.url %>
   <%= form.hidden_field :content %>
   <%= form.hidden_field :image_cache %>
-  <p><%= form.submit  "投稿" %></p>
+  <p><%= form.submit  "投稿" ,class:"imput_btn"%></p>
 <% end %>
 <%= form_with(model: @article, url: new_article_path, local: true, method:"get") do |form| %>
   <%= form.hidden_field :content %>
   <%= form.hidden_field :image_cache %>
-  <%= form.submit "戻る", name: "back" %>
+  <%= form.submit "戻る", name: "back", class: "btn btn-default return_back" %>
 <% end %>

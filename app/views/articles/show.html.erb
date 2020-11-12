@@ -1,5 +1,5 @@
 <h2>記事詳細</h2>
-<%= image_tag @article.image.url %>
+<!-- <%= image_tag @article.image.url %> -->
 <p class="show_content"><%= @article.content %></p>
   <% unless @article.user_id == current_user.id %>
     <% if @favorite.present? %>
